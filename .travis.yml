@@ -43,8 +43,6 @@ jobs:
     - env: srv=mariadb v=10.8
       os: windows
       language: shell
-    - env: srv=mariadb v=10.2 local=1
-      dist: bionic
     - env: srv=mariadb v=10.3 local=1
     - env: srv=mariadb v=10.4 local=1
     - env: srv=mariadb v=10.5 local=1
@@ -65,7 +63,7 @@ jobs:
     - env: server_branch=10.8
     - env: server_branch=10.8
       os: arm64
-    - env: server_branch=10.8
+    - env: srv=mariadb v=10.8 local=1
       os: osx
     - env: server_branch=10.8 TEST_OPTION=--ps-protocol
 
