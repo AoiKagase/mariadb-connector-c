@@ -11,7 +11,7 @@ if [ -n "$server_branch" ] ; then
   echo "run server test suite"
 
   # change travis localhost to use only 127.0.0.1
-  sudo sed -i 's/127\.0\.1\.1 localhost/127.0.0.1 localhost/' /etc/hosts
+  sudo sed -i '' 's/127\.0\.1\.1 localhost/127.0.0.1 localhost/' /etc/hosts
   sudo tail /etc/hosts
 
   # get latest server
