@@ -27,7 +27,11 @@ if [ -n "$server_branch" ] ; then
   mkdir tmp
   mkdir bld
   cd bld
-  cmake .. -DPLUGIN_MROONGA=NO -DPLUGIN_ROCKSDB=NO -DPLUGIN_SPIDER=NO -DPLUGIN_TOKUDB=NO
+  if [ "$TRAVIS_OS_NAME" = "osx" ] ; then
+    cmake .. -DPLUGIN_MROONGA=NO -DPLUGIN_ROCKSDB=NO -DPLUGIN_SPIDER=NO -DPLUGIN_TOKUDB=NO -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl
+  else
+    cmake .. -DPLUGIN_MROONGA=NO -DPLUGIN_ROCKSDB=NO -DPLUGIN_SPIDER=NO -DPLUGIN_TOKUDB=NO
+  fi
   cd $SERVER_DIR/tmp
   echo "PR:${TRAVIS_PULL_REQUEST} TRAVIS_COMMIT:${TRAVIS_COMMIT}"
   if [ -n "$TRAVIS_PULL_REQUEST" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
