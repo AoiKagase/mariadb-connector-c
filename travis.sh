@@ -60,7 +60,11 @@ else
 
   mkdir bld
   cd bld
-  cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCERT_PATH=${SSLCERT}
+  if [ "$TRAVIS_OS_NAME" = "osx" ] ; then
+    cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCERT_PATH=${SSLCERT} -DWITH_SSL=GNUTLS
+  else
+    cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCERT_PATH=${SSLCERT}
+  fi
 
   if [ "$TRAVIS_OS_NAME" = "windows" ] ; then
     echo "build from windows"
