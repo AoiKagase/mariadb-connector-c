@@ -28,7 +28,7 @@ if [ -n "$server_branch" ] ; then
   mkdir bld
   cd bld
   if [ "$TRAVIS_OS_NAME" = "osx" ] ; then
-    cmake .. -DPLUGIN_MROONGA=NO -DPLUGIN_ROCKSDB=NO -DPLUGIN_SPIDER=NO -DPLUGIN_TOKUDB=NO -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl
+    cmake .. -DPLUGIN_MROONGA=NO -DPLUGIN_ROCKSDB=NO -DPLUGIN_SPIDER=NO -DPLUGIN_TOKUDB=NO -DWITH_SSL=bundled
   else
     cmake .. -DPLUGIN_MROONGA=NO -DPLUGIN_ROCKSDB=NO -DPLUGIN_SPIDER=NO -DPLUGIN_TOKUDB=NO
   fi
