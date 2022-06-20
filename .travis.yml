@@ -66,6 +66,7 @@ jobs:
     - env: srv=mariadb v=10.8 local=1
       os: osx
       disable_homebrew: true
+      osx_image: xcode13.4
     - env: server_branch=10.8 TEST_OPTION=--ps-protocol
 
 script: ./travis.sh
