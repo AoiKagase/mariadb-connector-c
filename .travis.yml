@@ -40,7 +40,7 @@ jobs:
     - env: srv=skysql
     - env: srv=skysql-ha
   include:
-    - env: srv=mariadb v=10.5
+    - env: srv=mariadb v=10.8
       os: windows
       language: shell
     - env: srv=mariadb v=10.2 local=1
@@ -63,6 +63,8 @@ jobs:
     - if: type = push AND fork = false
       env: srv=skysql-ha
     - env: server_branch=10.8
+    - env: server_branch=10.8
+      os: arm64
     - env: server_branch=10.8 TEST_OPTION=--ps-protocol
 
 script: ./travis.sh
