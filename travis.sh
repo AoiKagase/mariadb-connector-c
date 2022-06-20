@@ -95,7 +95,6 @@ else
 
   ls -lrt
 
-  $SERVER_DIR/bld/client/mysql -h$MYSQL_TEST_HOST -P$MYSQL_TEST_PORT -u$MYSQL_TEST_USER -p$MYSQL_TEST_PASSWD -e"SHOW VARIABLES LIKE '%ssl%'"
   cd unittest/libmariadb
   ctest -V
 fi
