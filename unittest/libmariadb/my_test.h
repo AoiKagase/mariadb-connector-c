@@ -625,10 +625,21 @@ MYSQL *my_test_connect(MYSQL *mysql,
 {
   if (force_tls)
     mysql_options(mysql, MYSQL_OPT_SSL_ENFORCE, &force_tls); 
-  if (!mysql_real_connect(mysql, host, user, passwd, db, port, unix_socket, clientflag))
+  if (!mysql_real_connect(mysql, host, user, passwd, NULL, port, unix_socket, clientflag))
   {
     diag("error: %s", mysql_error(mysql));
     return NULL;
+  }
+
+  if (mysql_select_db(mysql, db))
+  {
+    char create_db[128];
+    sprintf(create_db, "CREATE SCHEMA %s", db);
+    if (mysql_query(mysql, create_db))
+    {
+      diag("Could not create schema. Error %s", mysql_error(mysql));
+      return NULL;
+    }
   }
 
   if (mysql && force_tls && !mysql_get_ssl_cipher(mysql))
