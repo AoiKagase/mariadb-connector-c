@@ -61,7 +61,6 @@ else
   mkdir bld
   cd bld
   if [ "$TRAVIS_OS_NAME" = "osx" ] ; then
-    brew install mariadb && mysql.server start;
     cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCERT_PATH=${SSLCERT} -DWITH_SSL=GNUTLS
   else
     cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCERT_PATH=${SSLCERT}

@@ -63,7 +63,7 @@ jobs:
     - env: server_branch=10.8
     - env: server_branch=10.8
       os: arm64
-    - env: srv=mariadb v=10.8 local=1
+    - env: srv=mariadb v=10.8
       os: osx
       disable_homebrew: true
       osx_image: xcode13.4
