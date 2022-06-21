@@ -27,6 +27,9 @@ install:
         linux)
           source connector-test-machine/launch.sh -t "$srv" -v "$v" -d testc -l "$local" -n "$native"
           ;;
+        osx)
+          source connector-test-machine/launch.sh -t "$srv" -v "$v" -d testc -l "$local" -n "$native"
+          ;;
       esac
     fi
 
