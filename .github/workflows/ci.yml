@@ -142,11 +142,15 @@ jobs:
           os: ${{ matrix.os }}
 
       - name: make ubuntu/macos
-        if: ${{ !startsWith(matrix.os, 'windows') }}
+        if: ${{ !startsWith(matrix.os, 'windows') && (matrix.arch != '32' || !matrix.arch) }}
         run: |
           cmake . -DCMAKE_BUILD_TYPE=RelWithDebInfo -DWITH_EXTERNAL_ZLIB=On
           make
-
+      - name: make ubuntu/macos 32bits
+        if: ${{ !startsWith(matrix.os, 'windows') && startsWith(matrix.arch, '32') }}
+        run: |
+          cmake . -DCMAKE_C_FLAGS="-m32" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DWITH_EXTERNAL_ZLIB=On
+          make
       - name: make windows 64bits
         if: ${{ startsWith(matrix.os, 'windows') && (matrix.arch != '32' || !matrix.arch) }}
         run: |
